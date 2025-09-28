@@ -19,7 +19,7 @@ $menu = [
             ],
             [
                 "nama" => "Kuliner"
-            ],
+            ], 
             [
                 "nama" => "Hiburan"
             ]
