@@ -36,7 +36,7 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin') {
                 <li>
                     <a href="#" class="nav-link active">
                         <i class="bi bi-people-fill me-2"></i>
-                        <b>Users Upload</b>
+                        Manage Users
                     </a>
                 </li>
                 <li>
@@ -80,9 +80,10 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin') {
                     <div class="card-body">
                         <div class="row">
                             <?php
+                            // upload gambar
                             $upload_dir = 'uploads/'; //mendefinisikan direktori
 
-                            if (is_dir($upload_dir)) { //mencari file dir yg cocok
+                            if (is_dir($upload_dir)) { //mencari file/dir yg cocok
                                 $images = glob($upload_dir . "*.{jpg,jpeg,png,gif,webp}", GLOB_BRACE); //untuk mencocokkan beberapa pattern sekaligus.
                                 if (!empty($images)) { //diperiksa tidak kosong
                                     foreach ($images as $image) {
@@ -103,6 +104,9 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin') {
                                     // jika tidak ada gambar di dlm dir
                                     echo '<div class="col-12"><p class="text-center">No images have been uploaded yet.</p></div>';
                                 }
+                            } else {
+                                // jika dir upload not found
+                                echo '<div class="col-12"><p class="text-center text-danger">Error: The \'uploads\' directory does not exist.</p></div>';
                             }
                             ?>
                         </div>

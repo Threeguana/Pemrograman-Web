@@ -1,5 +1,6 @@
 <?php
 session_start();
+// jika var session 'role' bukan user atau tidak ada, arahkan ke index.php
 if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'user') {
     header("Location: index.php");
     exit();
@@ -18,10 +19,10 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'user') {
         <link rel="stylesheet" href="styleUser.css" />
     </head>
     <body>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- menyisipkan jquery -->
-        <script src="jquery/jquery-3.7.1.min.js"></script>
+        <script src="jquery-3.7.1.min.js"></script>
         <script src="script.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
         <!-- sidebar -->
         <div class="d-flex flex-column flex-shrink-0 p-3 text-white sidebar">
@@ -34,7 +35,7 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'user') {
                 <li class="nav-item">
                     <a href="#" class="nav-link text-white" aria-current="page">
                         <i class="bi bi-house-door-fill me-2"></i>
-                        Dashboard
+                        <b>Dashboard</b>
                     </a>
                 </li>
                 <li>
@@ -46,7 +47,7 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'user') {
                 <li>
                     <a href="#" class="nav-link active">
                         <i class="bi bi-controller me-2"></i>
-                        <b>My Games</b>
+                        My Games
                     </a>
                 </li>
                 <li>
@@ -63,7 +64,7 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'user') {
                     <strong id="username-display"><?= htmlspecialchars($_SESSION['username']); ?></strong>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                    <li><a class="dropdown-item" href="logout.php">Log out</a></li>
+                    <li><a class="dropdown-item" href="logout.php">Sign out</a></li>
                 </ul>
             </div>
         </div>
@@ -73,18 +74,18 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'user') {
             <div class="container-fluid">
                 <div class="p-4 mb-4 text-white welcome-banner">
                     <h1 id="welcome-heading">
-                        Hello, <?= htmlspecialchars($_SESSION['username']); ?>!
+                        Welcome back, <?= htmlspecialchars($_SESSION['username']); ?>!
                     </h1>
-                    <p>You can share your experience here!</p>
+                    <p>Ready to jump back into the action?</p>
                 </div>
                 <div class="card bg-dark text-white">
                     <div class="card-header">
                         <i class="bi bi-cloud-arrow-up-fill"></i>
-                        Share your screenshots!
+                        Share Your Screenshots!
                     </div>
                     <div class="card-body">
+
                         <?php
-                        // jika file bukan gambar
                         if (isset($_SESSION['upload_errors']) && !empty($_SESSION['upload_errors'])) {
                             echo '<div class="alert alert-danger" role="alert">';
                             echo '<h4 class="alert-heading">Upload Gagal!</h4>';

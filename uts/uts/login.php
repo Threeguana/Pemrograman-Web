@@ -18,14 +18,15 @@ if (isset($_POST['login'])) {
 
         // Remember Me
         if (!empty($_POST['remember'])) {
-            // Set cookie
-            setcookie('remember_user', $username, time() + (3600), "/");
+            // Set cookie untuk 1 jam
+            setcookie('remember_user', $username, time() + 3600, "/");
             // nama, nilai, waktu expire, path
         } else {
             if (isset($_COOKIE['remember_user'])) {
-                setcookie('remember_user', '', time() - 3600, "/"); //hapus cookies
+                setcookie('remember_user', '', time() - 3600, "/");
             }
         }
+        // redirect sesuai role
         header("Location: {$_SESSION['role']}.php");
         exit();
     }

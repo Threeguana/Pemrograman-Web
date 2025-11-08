@@ -1,5 +1,5 @@
 <?php
-session_start(); //akses session yg aktif
+session_start();
 
 // hapus data session dan cookies
 $_SESSION = array();

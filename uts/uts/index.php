@@ -1,5 +1,5 @@
 <?php
-session_start(); //akses session yg aktif
+session_start();
 // pesan error
 $loginError = $_SESSION['login_error'] ?? '';
 unset($_SESSION['login_error']); //menghapus pesan error
