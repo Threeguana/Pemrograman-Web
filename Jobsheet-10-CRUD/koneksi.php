@@ -1,7 +1,9 @@
 <?php
-$koneksi = pg_connect("host=localhost port=5432 dbname=prakwebdb user=postgres password=awsome");
+define('HOST', 'localhost');
+define('USER', 'postgres');
+define('PASS', 'awsome');
+define('DB1', 'prakwebdb');
 
-if (!$koneksi) {
-    die("koneksi database gagal: " . pg_last_error()); //Call to unknown function: 'pg_last_error'
-}
+$db1 = new PDO("pgsql:host=" . HOST . ";dbname=" . DB1, USER, PASS);
+$db1->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 ?>
