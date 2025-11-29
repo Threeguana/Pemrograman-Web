@@ -14,7 +14,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'delete') {
     $crud->delete($id);
 }
 
-$tanpil = $crud->read();
+$tampil = $crud->read();
 ?>
 <!DOCTYPE HTML>
 <html lang="en">
@@ -41,7 +41,7 @@ $tanpil = $crud->read();
             </thead>
             <tbody>
                 <?php
-                foreach ($tanpil as $show) {
+                foreach ($tampil as $show) {
                     echo "<tr>";
                     echo "<td>" . $show['id'] . "</td>";
                     echo "<td>" . $show['jabatan'] . "</td>";
